@@ -7,16 +7,16 @@ use bank_db;
 CREATE TABLE Accounts (
 	ID				int				primary key		auto_increment,
     account_holder	varchar(255)	not null		unique,
-    balance			dec(10,2),
+    balance			dec(10,2)		not null,
     fees			dec(10,2)
 );
 
 -- create the transactions table
 CREATE TABLE Transactions (
 	ID				int				primary key		auto_increment,
-    amount			dec(10,2),
-    txn_type		varchar(10),
-    account_ID		int,
+    amount			dec(10,2)		not null,
+    txn_type		varchar(10)		not null,
+    account_ID		int				not null,
     FOREIGN KEY (account_ID) REFERENCES Accounts (ID)
 );
 
